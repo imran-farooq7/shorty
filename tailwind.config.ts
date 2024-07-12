@@ -21,6 +21,9 @@ const config: Config = {
 			spacing: {
 				180: "32rem",
 			},
+			container: {
+				padding: "3rem",
+			},
 		},
 	},
 	plugins: [],

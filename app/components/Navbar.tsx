@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Navbar = () => {
 	return (
-		<nav className="relative container mx-auto p-6">
+		<nav className="relative container mx-auto py-6">
 			<div className="flex items-center justify-between">
 				<div className="flex items-center space-x-20">
 					<Link href={"/"}>
