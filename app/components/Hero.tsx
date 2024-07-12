@@ -28,6 +28,7 @@ const Hero = () => {
 						alt="working"
 						width={733}
 						height={482}
+						priority
 					/>
 				</div>
 			</div>

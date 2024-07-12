@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { Poppins } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const poppins = Poppins({
 	weight: ["400", "600", "700"],
@@ -22,6 +24,7 @@ export default function RootLayout({
 			<body className={poppins.className}>
 				<Navbar />
 				{children}
+				<ToastContainer position="top-center" />
 			</body>
 		</html>
 	);
