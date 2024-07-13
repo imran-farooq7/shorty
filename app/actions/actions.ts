@@ -1,14 +1,16 @@
 "use server";
 
-import { error } from "console";
 import { revalidatePath } from "next/cache";
 
 export const getTinyUrls = async () => {
-	const res =
-		await fetch(`https://api.tinyurl.com/urls/available?api_token=${process.env.API_TOKEN}
-`);
+	const res = await fetch(`https://urlbae.com/api/urls`, {
+		headers: {
+			Authorization: `Bearer ${process.env.API_KEY}`,
+			"Content-Type": "application/json",
+		},
+	});
 	const data = await res.json();
-	return data.data;
+	return data.data.urls;
 };
 export const createTinyUrl = async (prevState: any, formData: FormData) => {
 	const url = formData.get("url");
@@ -22,19 +24,16 @@ export const createTinyUrl = async (prevState: any, formData: FormData) => {
 	}
 
 	try {
-		const res = await fetch(
-			`https://api.tinyurl.com/create?api_token=${process.env.API_TOKEN}`,
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					accept: "application/json",
-				},
-				body: JSON.stringify({
-					url: urlText,
-				}),
-			}
-		);
+		const res = await fetch("https://urlbae.com/api/url/add", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${process.env.API_KEY}`,
+			},
+			body: JSON.stringify({
+				url: urlText,
+			}),
+		});
 		const data = await res.json();
 		if (res.ok) {
 			revalidatePath("/");
