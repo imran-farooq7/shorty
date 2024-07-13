@@ -1,3 +1,4 @@
+import Features from "./components/Features";
 import Hero from "./components/Hero";
 import LinkForm from "./components/LinkForm";
 import LinksList from "./components/LinksList";
@@ -10,6 +11,7 @@ const Home = () => {
 			<LinkForm />
 			<LinksList />
 			<Stats />
+			<Features />
 		</div>
 	);
 };
